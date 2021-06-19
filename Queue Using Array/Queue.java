@@ -1,35 +1,58 @@
-package com.queue;
+package com.cdac;
 
 public class Queue {
+	private int front;
+	private int rear;
 	private int count;
-	private int[] arr ;
-	private int size,front, rear;
+	private int[] arr;
 
+	/*
+	 * public Queue() { front = 0; rear = -1; count = 0; arr = new int[5]; }
+	 */
 	public Queue(int size) {
-		this.size = size;
-		arr=new int[size];
-		rear = 0;
 		front = 0;
+		rear = -1;
+		count = 0;
+		arr = new int[size];
 	}
 
-	public void enQueue(int value) {
-		arr[rear] = value;
-		rear++;
-		count++;
+	public boolean isFull() {
+		return (count == arr.length);
 	}
 
-	public int deQueue() {
-		int data = arr[front];
-		front++;
-		count--;
-		return data;
+	public boolean isEmpty() {
+		return (count == 0);
+	}
 
+	public void enqueue(int element) {
+		if (isFull()) {
+			System.out.println("Queue is full.");
+		} else {
+			rear = (rear + 1) % arr.length;
+			arr[rear] = element;
+			count++;
+		}
+	}
+
+	public int dequeue() {
+		if (isEmpty()) {
+			throw new RuntimeException("Queue is empty.");
+		} else {
+			int temp = arr[front];
+			front = (front + 1) % arr.length;
+			count--;
+			return temp;
+		}
 	}
 
 	public void show() {
-		System.out.println("Elements :");
-		for (int i = 0; i < count; i++) {
-			System.out.print(arr[i] + " ");
+		if (isEmpty()) {
+			throw new RuntimeException("Queue is Empty");
+		} else {
+			System.out.println("Elements: ");
+			for (int i = 0; i < count; i++) {
+				System.out.println(arr[(front + i) % 5]);
+			}
 		}
 	}
 }
