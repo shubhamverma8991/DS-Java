@@ -7,12 +7,12 @@ public class Stack {
 
 	public void push(int data) // to add data
 	{
-//		if (isFull()) {
-//			System.out.println("Stack is Full");
-//		} 
-//		else {
+		if (isFull()) {
+			System.out.println("Stack is Full");
+		} 
+		else {
 			stack[++top] = data;
-//		}
+		}
 	}
 
 	public int pop() throws StackException // to remove data
