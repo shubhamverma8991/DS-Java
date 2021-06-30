@@ -1,0 +1,18 @@
+package com.bracket;
+
+import java.util.Scanner;
+
+public class Runner {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter Bracket");
+		String s = sc.next();
+		BracketBalancing bb = new BracketBalancing();
+		if ((bb.balance(s))) {
+			System.out.println("Balanced");
+		} else {
+			System.out.println("Not Balanced");
+		}
+		sc.close();
+	}
+}

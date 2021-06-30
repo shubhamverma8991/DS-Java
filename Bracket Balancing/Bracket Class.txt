@@ -1,0 +1,61 @@
+package com.bracket;
+
+public class Bracket {
+	private int top;
+	private char[] arr;
+	
+	public Bracket() 
+	{
+		top=-1;
+		arr = new char[6];
+	}
+	public Bracket(int size)
+	{
+		top=-1;
+		arr = new char[size];
+	}
+	
+	public void push(char element)
+	{
+		if (isFull())
+		{
+			System.out.println("Stack is full. Cannot push an element.");
+		}
+		else
+		{
+			arr[++top] = element;
+		}
+	}
+	
+	
+	private boolean isFull() {
+	
+		return (top==arr.length-1);
+	}
+	
+	public int pop()
+	{
+	if (isEmpty()) {
+		throw new RuntimeException("Stack is empty");
+	}else
+		{
+		return arr[top--];
+		}
+		}
+	public boolean isEmpty() {
+	
+		return top == -1;
+	}
+	public int peek()
+	{
+		if (isEmpty())
+		{
+			throw new RuntimeException("Empty Stack");
+		}
+		else
+		{
+			return arr[top];
+		}
+	}
+	
+	}
